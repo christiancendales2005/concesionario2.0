@@ -1,5 +1,6 @@
 package com.ccprog.demoConcesionario.app.implementacion;
 
+import com.ccprog.demoConcesionario.app.entity.Vehiculo;
 import com.ccprog.demoConcesionario.app.entity.Venta;
 import com.ccprog.demoConcesionario.app.repositorio.RepositoryVenta;
 import com.ccprog.demoConcesionario.app.servicio.VentaServicio;
@@ -35,7 +36,13 @@ public class VentaImpl implements VentaServicio {
     }
 
     @Override
-    public void eliminarVenta(int id) {
+    public void eliminarVenta(int id) {System.out.println("######"+id);
+        Venta venta = this.repositoryVenta.getById(id);
+        System.out.println("@@@@@@ "+venta.toString());
+        if (venta != null){
+            this.repositoryVenta.delete(venta);
+        }
+    }
 
     }
-}
+

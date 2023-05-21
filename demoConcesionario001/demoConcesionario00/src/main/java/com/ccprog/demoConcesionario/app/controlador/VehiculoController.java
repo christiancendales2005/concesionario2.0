@@ -81,4 +81,12 @@ public class VehiculoController {
   res.put("data", respuesta);
   return new ResponseEntity<>(res, HttpStatus.OK);
  }
+ @GetMapping("/eliminar/{id}")
+ public  ResponseEntity<Map<String,Object>> eliminarVehiculo(@PathVariable int id){
+  Map<String,Object> res=new HashMap<>();
+  String resp=this.vehiculoNegocio.eliminar(id);
+  res.put("status","ok");
+  res.put("data",resp);
+  return new ResponseEntity<>(res, HttpStatus.OK);
+ }
 }

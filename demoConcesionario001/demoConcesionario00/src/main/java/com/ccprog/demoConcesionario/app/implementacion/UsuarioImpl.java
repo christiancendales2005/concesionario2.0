@@ -36,6 +36,12 @@ public class UsuarioImpl implements UsuarioServicio {
 
     @Override
     public void eliminarUsuario(int id) {
+        System.out.println("######"+id);
+        Usuario usuario = this.repositoryUsuario.getById(id);
+        System.out.println("@@@@@@ "+usuario.toString());
+        if (usuario != null){
+            this.repositoryUsuario.delete(usuario);
+        }
 
     }
 }

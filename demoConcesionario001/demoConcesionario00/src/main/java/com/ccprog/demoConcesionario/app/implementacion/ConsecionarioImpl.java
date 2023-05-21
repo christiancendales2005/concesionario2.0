@@ -1,6 +1,7 @@
 package com.ccprog.demoConcesionario.app.implementacion;
 
 import com.ccprog.demoConcesionario.app.entity.Consecionario;
+import com.ccprog.demoConcesionario.app.entity.Usuario;
 import com.ccprog.demoConcesionario.app.repositorio.RepositoryConsecionario;
 import com.ccprog.demoConcesionario.app.servicio.ConsecionarioServicio;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,12 @@ public class ConsecionarioImpl implements ConsecionarioServicio {
     }
 
     @Override
-    public void eliminarConsecionario (int id){
-
-    }
+    public void eliminarConsecionario(int id) {
+        System.out.println("######"+id);
+        Consecionario consecionario = this.repositoryConsecionario.getById(id);
+        System.out.println("@@@@@@ "+consecionario.toString());
+        if (consecionario != null){
+            this.repositoryConsecionario.delete(consecionario);
+        }
+}
 }

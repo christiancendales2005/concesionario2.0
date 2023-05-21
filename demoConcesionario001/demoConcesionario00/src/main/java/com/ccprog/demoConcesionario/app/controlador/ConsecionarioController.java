@@ -34,18 +34,17 @@ public class ConsecionarioController {
     @ResponseBody
     public  ResponseEntity<Map<String, Object>> crearConsecionario(@RequestBody Map<String, Object> request){
         Map<String, Object> res=new HashMap<String, Object>();
-
         System.out.println("@@@@@@@"+request.toString());
         ConsecionarioDto consecionarioDto=new ConsecionarioDto();
 
         consecionarioDto.setId_consecionario(0);
-        consecionarioDto.setNombre_cosecionario(request.get("nombre_consecionario").toString());
+        consecionarioDto.setNombre_consecionario(request.get("nombre_consecionario").toString());
         consecionarioDto.setNit_consecionario(Integer.parseInt(request.get("nit_consecionario").toString()));
         consecionarioDto.setDireccion(request.get("direccion").toString());
         consecionarioDto.setTelefono(Integer.parseInt(request.get("telefono").toString()));
 
         String respuesta=this.consecionarioNegocio.guardarConsecionario(consecionarioDto);
-        res.put("status", HttpStatus.CREATED);
+        res.put("status", HttpStatus.ACCEPTED);
         res.put("data", respuesta);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
@@ -59,7 +58,7 @@ public class ConsecionarioController {
         ConsecionarioDto consecionarioDto=new ConsecionarioDto();
 
         consecionarioDto.setId_consecionario(0);
-        consecionarioDto.setNombre_cosecionario(request.get("nombre_consecionario").toString());
+        consecionarioDto.setNombre_consecionario(request.get("nombre_consecionario").toString());
         consecionarioDto.setNit_consecionario(Integer.parseInt(request.get("nit_consecionario").toString()));
         consecionarioDto.setDireccion(request.get("direccion").toString());
         consecionarioDto.setTelefono(Integer.parseInt(request.get("telefono").toString()));
@@ -67,6 +66,14 @@ public class ConsecionarioController {
         String respuesta=this.consecionarioNegocio.guardarConsecionario(consecionarioDto);
         res.put("status", HttpStatus.ACCEPTED);
         res.put("data", respuesta);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+    @GetMapping("/eliminar/{id}")
+    public  ResponseEntity<Map<String,Object>> eliminarConsecionario(@PathVariable int id){
+        Map<String,Object> res=new HashMap<>();
+        String resp=this.consecionarioNegocio.eliminar(id);
+        res.put("status","ok");
+        res.put("data",resp);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }

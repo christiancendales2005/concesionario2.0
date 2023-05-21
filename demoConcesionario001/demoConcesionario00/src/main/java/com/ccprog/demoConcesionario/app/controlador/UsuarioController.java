@@ -36,7 +36,6 @@ public class UsuarioController {
     @ResponseBody
     public ResponseEntity<Map<String,Object>> crearUsuario(@RequestBody Map<String,Object> request){
         Map<String, Object> res=new HashMap<String,Object>();
-
         System.out.println("@@@@@@"+request.toString());
         UsuarioDto usuarioDto=new UsuarioDto();
 
@@ -79,6 +78,14 @@ public class UsuarioController {
         String respuesta=this.usuarioNegocio.guardarUsuario(usuarioDto);
         res.put("status", HttpStatus.ACCEPTED);
         res.put("data", respuesta);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+    @GetMapping("/eliminar/{id}")
+    public  ResponseEntity<Map<String,Object>> eliminarUsuario(@PathVariable int id){
+        Map<String,Object> res=new HashMap<>();
+        String resp=this.usuarioNegocio.eliminar(id);
+        res.put("status","ok");
+        res.put("data",resp);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 }

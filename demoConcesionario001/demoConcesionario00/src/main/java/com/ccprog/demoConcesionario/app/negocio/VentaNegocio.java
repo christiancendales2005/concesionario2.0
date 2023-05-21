@@ -1,5 +1,6 @@
 package com.ccprog.demoConcesionario.app.negocio;
 
+import com.ccprog.demoConcesionario.app.entity.Usuario;
 import com.ccprog.demoConcesionario.app.implementacion.VentaImpl;
 import com.ccprog.demoConcesionario.app.dto.VentaDto;
 import com.ccprog.demoConcesionario.app.entity.Venta;
@@ -45,6 +46,17 @@ public class VentaNegocio {
             return "Ok";
         }catch (Exception e){
             return "bad";
+        }
+    }
+    public String eliminar(int id){
+        Usuario usuario;
+        try{
+            this.ventaImp.eliminarVenta(id);
+            return "Eliminacion exitosa";
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Eliminacion Fallida";
         }
     }
 }

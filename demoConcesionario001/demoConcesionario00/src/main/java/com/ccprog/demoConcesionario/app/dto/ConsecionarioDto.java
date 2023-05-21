@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 public class ConsecionarioDto {
 
     private int id_consecionario;
-    private String nombre_cosecionario;
+    private String nombre_consecionario;
     private int nit_consecionario;
     private String direccion;
     private int telefono;

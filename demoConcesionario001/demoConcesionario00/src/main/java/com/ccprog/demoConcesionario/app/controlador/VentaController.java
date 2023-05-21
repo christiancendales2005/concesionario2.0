@@ -49,6 +49,14 @@ public class VentaController {
         res.put("Data", respuesta);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+    @GetMapping("/eliminar/{id}")
+    public  ResponseEntity<Map<String,Object>> eliminarVenta(@PathVariable int id){
+        Map<String,Object> res=new HashMap<>();
+        String resp=this.ventaNegocio.eliminar(id);
+        res.put("status","ok");
+        res.put("data",resp);
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
 /*
    @PostMapping("/actualizar")
     @ResponseBody

@@ -70,4 +70,15 @@ public class UsuarioNegocio {
             return "Bad";
         }
     }
+    public String eliminar(int id){
+        Usuario usuario;
+        try{
+            this.usuarioImp.eliminarUsuario(id);
+            return "Eliminacion exitosa";
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Eliminacion Fallida";
+        }
+    }
 }

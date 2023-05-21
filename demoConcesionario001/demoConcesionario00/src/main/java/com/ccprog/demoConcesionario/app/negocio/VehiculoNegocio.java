@@ -1,5 +1,6 @@
 package com.ccprog.demoConcesionario.app.negocio;
 
+import com.ccprog.demoConcesionario.app.entity.Usuario;
 import com.ccprog.demoConcesionario.app.implementacion.VehiculoImpl;
 import com.ccprog.demoConcesionario.app.dto.VehiculoDto;
 import com.ccprog.demoConcesionario.app.entity.Vehiculo;
@@ -65,6 +66,17 @@ public class VehiculoNegocio {
            return "Ok";
         }catch (Exception e){
             return "bad";
+        }
+    }
+    public String eliminar(int id){
+        Usuario usuario;
+        try{
+            this.vehiculoImp.eliminarVehiculo(id);
+            return "Eliminacion exitosa";
+
+        }catch (Exception e){
+            e.printStackTrace();
+            return "Eliminacion Fallida";
         }
     }
 }
